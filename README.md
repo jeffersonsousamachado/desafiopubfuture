@@ -3,20 +3,20 @@
 
 #### data 06/01/2022
 * [X] Versionamento com Git 
-* [ ] Configuração ambiente de desevolvimento
+* [X] Configuração ambiente de desevolvimento
 
 #### 07/01/2022
 
-* [ ] Definição do servidor local
-* [ ] Instalação das bibliotecas
+* [X] Definição do servidor local
+* [x] Instalação das bibliotecas
 * [ ] Preparação dos modelos  de dados
-* [ ] Preparação das rotas
+* [x] Preparação das rotas
 
 
 #### 08/01/2022
 
-* [ ] Estrutura dos métodos (lógica dos dados) 
-* [ ] Criar Crud (RECEITAS) - valor / dataRecebimento / dataRecebimentoEsperado / descrição / conta / tipoReceita (salário, presente, prêmio, outros)
+* [x] Estrutura dos métodos (lógica dos dados) 
+* [x] Criar Crud (RECEITAS) - valor / dataRecebimento / dataRecebimentoEsperado / descrição / conta / tipoReceita (salário, presente, prêmio, outros)
 * [ ] Filtro por tipo de receita e por data final e inicial
 
 #### 09/01/2022

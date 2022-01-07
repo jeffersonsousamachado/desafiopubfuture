@@ -1,0 +1,29 @@
+{
+  "name": "desafiopubfuture",
+  "version": "1.0.0",
+  "description": "#### data 06/01/2022 * [X] Versionamento com Git  * [ ] Configuração ambiente de desevolvimento",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffersonsousamachado/desafiopubfuture.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffersonsousamachado/desafiopubfuture/issues"
+  },
+  "homepage": "https://github.com/jeffersonsousamachado/desafiopubfuture#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "jest": "^27.4.7",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
