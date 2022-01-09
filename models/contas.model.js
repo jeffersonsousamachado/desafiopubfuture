@@ -8,7 +8,7 @@ const Despesa = db.define('tb_contas', {
     primaryKey: true,
     autoIncrement: true,
   },
-  saldo: {type: Sequelize.DECIMAL, default: 0},
+  saldo: {type: Sequelize.FLOAT, default: 0},
   instituicao_financeira: { type: Sequelize.STRING },
   tipo_conta: { type: Sequelize.STRING },
 });

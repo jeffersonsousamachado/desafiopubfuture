@@ -14,7 +14,8 @@ module.exports = class ReceitaController {
 
   async novaReceita(payload) {
     await db.sync();
-    const saldo = await ContasModel.sum('saldo', { group: 'id' });
+
+    const saldo = await ContasModel.sum("saldo", { group: "id"});
     const saldoTotal = saldo + payload.valor;
 
     await ContasModel.update(
@@ -24,7 +25,6 @@ module.exports = class ReceitaController {
     const response = await ReceitaModel.create(payload);
 
     return Promise.resolve(response);
-
   }
 
   async filterByDate({ data_inicial, data_final }) {
@@ -33,5 +33,26 @@ module.exports = class ReceitaController {
       where: { data_recebimento: { [Op.between]: [data_inicial, data_final] } },
     });
     return Promise.resolve(response);
+  }
+
+  async removerReceita(id) {
+    await db.sync();
+    const response = await ReceitaModel.findOne({ where: { id } });
+    return Promise.resolve(response.destroy());
+  }
+
+  async atualizarReceita(payload) {
+    await db.sync();
+    const response = await ReceitaModel.update(payload, {
+      where: { id: payload.id },
+    });
+    return Promise.resolve(response);
+  }
+
+  async receitaTotal() {
+    await db.sync();
+    const response = await ReceitaModel.findAll();
+    const receitaTotal = response.map(receita => parseFloat(receita.valor)).reduce((p, c) => p + c);
+    return Promise.resolve(receitaTotal);
   }
 };

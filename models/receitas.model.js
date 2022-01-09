@@ -9,7 +9,7 @@ const Receita = db.define('tb_receitas', {
     primaryKey: true,
     autoIncrement: true,
   },
-  valor: {type: Sequelize.DECIMAL},
+  valor: {type: Sequelize.FLOAT},
   data_recebimento: { type: Sequelize.DATE },
   data_recebimento_esperado: { type: Sequelize.DATE },
   data_inicial: { type: Sequelize.DATE },

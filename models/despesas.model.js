@@ -8,7 +8,7 @@ const Despesa = db.define('tb_despesas', {
     primaryKey: true,
     autoIncrement: true,
   },
-  valor: {type: Sequelize.DECIMAL},
+  valor: {type: Sequelize.FLOAT},
   data_pagamento: { type: Sequelize.DATE },
   data_pagamento_esperado: { type: Sequelize.DATE },
   data_inicial: { type: Sequelize.DATE },
