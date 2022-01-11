@@ -30,17 +30,24 @@ module.exports = class ReceitaController {
     });
     return Promise.resolve(response);
   }
-  
+
   async transferenciaConta(idOrigem, idDestino, valor) {
     await db.sync();
-    const responseOrigem = await ContasModel.findOne({ where: { id: idOrigem } });
-    const responseDestino = await ContasModel.findOne({ where: { id: idDestino } });
+    const responseOrigem = await ContasModel.findOne({
+      where: { id: idOrigem },
+    });
+    const responseDestino = await ContasModel.findOne({
+      where: { id: idDestino },
+    });
 
     const novoSaldo = parseFloat(responseDestino.saldo) + parseFloat(valor);
     const menoSaldo = parseFloat(responseOrigem.saldo) - parseFloat(valor);
-    
-    await ContasModel.update({saldo: menoSaldo}, {where: {id: idOrigem}});
-    await ContasModel.update({saldo: novoSaldo}, {where: {id: idDestino}});
+
+    await ContasModel.update({ saldo: menoSaldo }, { where: { id: idOrigem } });
+    await ContasModel.update(
+      { saldo: novoSaldo },
+      { where: { id: idDestino } }
+    );
 
     return Promise.resolve(true);
   }
@@ -48,7 +55,9 @@ module.exports = class ReceitaController {
   async saldoTotal() {
     await db.sync();
     const response = await ContasModel.findAll();
-    const saldoTotal = response.map(conta => parseFloat(conta.saldo)).reduce((p, c) => p + c);
+    const saldoTotal = response
+      .map((conta) => parseFloat(conta.saldo))
+      .reduce((p, c) => p + c);
     return Promise.resolve(saldoTotal);
   }
 };

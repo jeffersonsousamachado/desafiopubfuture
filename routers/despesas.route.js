@@ -19,6 +19,12 @@ router.post("/", async (req, res) => {
   res.status(201).json({ data: response });
 });
 
+router.post("/filter", async (req, res) => {
+  const payload = req.body;
+  const response = await ds.filterByDate(payload);
+  res.status(200).json({ data: response });
+});
+
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

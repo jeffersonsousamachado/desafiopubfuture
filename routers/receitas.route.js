@@ -4,11 +4,10 @@ const receitaController = require("../controllers/receitas.controller");
 const rc = new receitaController();
 const moment = require("moment");
 
-
 // listar receita
 router.get("/", async (req, res) => {
   const response = await rc.getReceitas();
-  // exemplo de data para cadastro 
+  // exemplo de data para cadastro
   // console.log(moment().subtract(1, "day").toDate(), "ontem");
   // console.log(moment().toDate(), "ontem");
   res.status(200).json({ data: response });
@@ -26,8 +25,6 @@ router.post("/", async (req, res) => {
   res.status(201).json({ data: response });
 });
 
-
-
 // filtrar receita por data
 router.post("/filter", async (req, res) => {
   const payload = req.body;
@@ -35,6 +32,12 @@ router.post("/filter", async (req, res) => {
   res.status(200).json({ data: response });
 });
 
+// filtro por tipo de receita
+router.post("/filter-by-type", async (req, res) => {
+  const payload = req.body;
+  const response = await rc.filterByType(payload);
+  res.status(200).json({ data: response });
+});
 
 // deletar receita
 router.delete("/:id", async (req, res) => {
@@ -47,7 +50,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-
 // atualizar receita
 router.put("/", async (req, res) => {
   const payload = req.body;
@@ -58,9 +60,5 @@ router.put("/", async (req, res) => {
     res.status(500).json({ data: "não foi possível atualizar a receita" });
   }
 });
-
-
-
-
 
 module.exports = router;

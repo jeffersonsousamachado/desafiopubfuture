@@ -11,6 +11,14 @@ module.exports = class ReceitaController {
     return Promise.resolve(response);
   }
 
+  async filterByDate({ data_inicial, data_final }) {
+    await db.sync();
+    const response = await DespesasModel.findAll({
+      where: { data_recebimento: { [Op.between]: [data_inicial, data_final] } },
+    });
+    return Promise.resolve(response);
+  }   
+
   async novaDespesa(payload) {
     await db.sync();
     const response = await DespesasModel.create(payload);
