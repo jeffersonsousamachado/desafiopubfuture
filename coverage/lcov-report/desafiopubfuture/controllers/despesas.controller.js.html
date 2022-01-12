@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.8% </span>
+                <span class="strong">81.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/47</span>
+                <span class='fraction'>43/53</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/7</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.8% </span>
+                <span class="strong">81.13% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/47</span>
+                <span class='fraction'>43/53</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,7 +113,13 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -135,10 +141,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -147,24 +159,24 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const db = require("../database/index");
-&nbsp;
+const { Op } = require("sequelize");
 const DespesasModel = require("../models/despesas.model");
 &nbsp;
 module.exports = class ReceitaController {
@@ -179,16 +191,22 @@ module.exports = class ReceitaController {
   async filterByDate<span class="fstat-no" title="function not covered" >({ data_inicial, data_final }) {</span>
 <span class="cstat-no" title="statement not covered" >    await db.sync();</span>
 <span class="cstat-no" title="statement not covered" >    const response = await DespesasModel.findAll({</span>
-<span class="cstat-no" title="statement not covered" >      where: { data_recebimento: { [Op.between]: [data_inicial, data_final] } },</span>
+<span class="cstat-no" title="statement not covered" >      where: { createdAt: { [Op.between]: [data_inicial, data_final] } },</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve(response);</span>
-<span class="cstat-no" title="statement not covered" >  }   </span>
-&nbsp;
-  async novaDespesa<span class="fstat-no" title="function not covered" >(payload) {</span>
-<span class="cstat-no" title="statement not covered" >    await db.sync();</span>
-<span class="cstat-no" title="statement not covered" >    const response = await DespesasModel.create(payload);</span>
-<span class="cstat-no" title="statement not covered" >    return Promise.resolve(response);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
+  
+  async filterByType({tipo_despesas}) {
+    await db.sync();
+    const response = await DespesasModel.findAll({where: {tipo_despesas}});
+    return Promise.resolve(response);
+  }
+&nbsp;
+  async novaDespesa(payload) {
+    await db.sync();
+    const response = await DespesasModel.create(payload);
+    return Promise.resolve(response);
+  }
 &nbsp;
   async removerDespesa<span class="fstat-no" title="function not covered" >(id) {</span>
 <span class="cstat-no" title="statement not covered" >    await db.sync();</span>
@@ -196,19 +214,19 @@ module.exports = class ReceitaController {
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve(response.destroy());</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-  async atualizarDespesas<span class="fstat-no" title="function not covered" >(payload) {</span>
-<span class="cstat-no" title="statement not covered" >    await db.sync();</span>
-<span class="cstat-no" title="statement not covered" >    const response = await DespesasModel.update(payload, {</span>
-<span class="cstat-no" title="statement not covered" >      where: { id: payload.id },</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >    return Promise.resolve(response);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-  async despesasTotal<span class="fstat-no" title="function not covered" >() {</span>
-<span class="cstat-no" title="statement not covered" >    await db.sync();</span>
-<span class="cstat-no" title="statement not covered" >    const response = await DespesasModel.findAll();</span>
-<span class="cstat-no" title="statement not covered" >    const despesasTotal = response.map(despesa =&gt; parseFloat(despesa.valor)).reduce((p, c) =&gt; p + c);</span>
-<span class="cstat-no" title="statement not covered" >    return Promise.resolve(despesasTotal);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async atualizarDespesas(payload) {
+    await db.sync();
+    const response = await DespesasModel.update(payload, {
+      where: { id: payload.id },
+    });
+    return Promise.resolve(response);
+  }
+  async despesasTotal() {
+    await db.sync();
+    const response = await DespesasModel.findAll();
+    const despesasTotal = response.map(despesa =&gt; parseFloat(despesa.valor||0)).reduce((p, c) =&gt; p + c);
+    return Promise.resolve(despesasTotal);
+  }
 };
 &nbsp;
 &nbsp;
@@ -220,7 +238,7 @@ module.exports = class ReceitaController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jan 11 2022 20:02:39 GMT-0300 (Horário Padrão de Brasília)
+                at Wed Jan 12 2022 20:07:06 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../prettify.js"></script>
         <script>

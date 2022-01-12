@@ -4,7 +4,7 @@ const receitaController = require("../controllers/receitas.controller");
 const rc = new receitaController();
 const moment = require("moment");
 
-// listar receita
+// listar receita - (testado)
 router.get("/", async (req, res) => {
   const response = await rc.getReceitas();
   // exemplo de data para cadastro
@@ -13,33 +13,34 @@ router.get("/", async (req, res) => {
   res.status(200).json({ data: response });
 });
 
+// somar receita total - ( testado) 
 router.get("/receita-total", async (req, res) => {
   const response = await rc.receitaTotal();
   res.status(200).json({ data: response });
 });
 
-// criar receita
+// criar receita - (testado)
 router.post("/", async (req, res) => {
   const payload = req.body;
   const response = await rc.novaReceita(payload);
   res.status(201).json({ data: response });
 });
 
-// filtrar receita por data
+// filtrar receita por data (testado)
 router.post("/filter", async (req, res) => {
   const payload = req.body;
   const response = await rc.filterByDate(payload);
   res.status(200).json({ data: response });
 });
 
-// filtro por tipo de receita
+// filtro por tipo de receita -(testado)
 router.post("/filter-by-type", async (req, res) => {
   const payload = req.body;
   const response = await rc.filterByType(payload);
   res.status(200).json({ data: response });
 });
 
-// deletar receita
+// deletar receita - (testado)
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -50,7 +51,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// atualizar receita
+// atualizar receita - (testado)
 router.put("/", async (req, res) => {
   const payload = req.body;
   try {

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.81% </span>
+                <span class="strong">72.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/64</span>
+                <span class='fraction'>47/65</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.81% </span>
+                <span class="strong">72.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/64</span>
+                <span class='fraction'>47/65</span>
             </div>
         
             
@@ -127,7 +127,22 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -146,19 +161,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -181,14 +183,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require("express");
@@ -197,7 +199,7 @@ const receitaController = require("../controllers/receitas.controller");
 const rc = new receitaController();
 const moment = require("moment");
 &nbsp;
-// listar receita
+// listar receita - (testado)
 router.get("/", async (req, res) =&gt; {
   const response = await rc.getReceitas();
   // exemplo de data para cadastro
@@ -206,33 +208,34 @@ router.get("/", async (req, res) =&gt; {
   res.status(200).json({ data: response });
 });
 &nbsp;
+// somar receita total - ( testado) 
 router.get("/receita-total", async (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  const response = await rc.receitaTotal();</span>
-<span class="cstat-no" title="statement not covered" >  res.status(200).json({ data: response });</span>
-<span class="cstat-no" title="statement not covered" >});</span>
+  const response = await rc.receitaTotal();
+  res.status(200).json({ data: response });
+});
 &nbsp;
-// criar receita
+// criar receita - (testado)
 router.post("/", async (req, res) =&gt; {
   const payload = req.body;
   const response = await rc.novaReceita(payload);
   res.status(201).json({ data: response });
 });
 &nbsp;
-// filtrar receita por data
+// filtrar receita por data (testado)
 router.post("/filter", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const payload = req.body;</span>
 <span class="cstat-no" title="statement not covered" >  const response = await rc.filterByDate(payload);</span>
 <span class="cstat-no" title="statement not covered" >  res.status(200).json({ data: response });</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-// filtro por tipo de receita
+// filtro por tipo de receita -(testado)
 router.post("/filter-by-type", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const payload = req.body;</span>
 <span class="cstat-no" title="statement not covered" >  const response = await rc.filterByType(payload);</span>
 <span class="cstat-no" title="statement not covered" >  res.status(200).json({ data: response });</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-// deletar receita
+// deletar receita - (testado)
 router.delete("/:id", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const { id } = req.params;</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
@@ -243,16 +246,16 @@ router.delete("/:id", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-// atualizar receita
+// atualizar receita - (testado)
 router.put("/", async (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  const payload = req.body;</span>
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    await rc.atualizarReceita(payload);</span>
-<span class="cstat-no" title="statement not covered" >    res.status(201).json({ data: "receita atualizada" });</span>
-<span class="cstat-no" title="statement not covered" >  } catch (err) {</span>
+  const payload = req.body;
+  try {
+    await rc.atualizarReceita(payload);
+    res.status(201).json({ data: "receita atualizada" });
+  } <span class="branch-0 cbranch-no" title="branch not covered" >catch (err) {</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({ data: "não foi possível atualizar a receita" });</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >});</span>
+});
 &nbsp;
 module.exports = router;
 &nbsp;</pre></td></tr></table></pre>
@@ -262,7 +265,7 @@ module.exports = router;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jan 11 2022 20:02:39 GMT-0300 (Horário Padrão de Brasília)
+                at Wed Jan 12 2022 20:07:06 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../prettify.js"></script>
         <script>

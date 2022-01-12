@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.93% </span>
+                <span class="strong">78.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/64</span>
+                <span class='fraction'>52/66</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>5/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.93% </span>
+                <span class="strong">78.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>39/64</span>
+                <span class='fraction'>52/66</span>
             </div>
         
             
@@ -127,7 +127,9 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -177,19 +179,21 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const db = require("../database/index");
 const { Op } = require("sequelize");
@@ -208,7 +212,7 @@ module.exports = class ReceitaController {
   async novaReceita(payload) {
     await db.sync();
 &nbsp;
-    // const saldo = await ContasModel.sum("saldo", { group: "id"});
+    // const saldo = await ContasModels.sum("saldo", { group: "id" });
     // const saldoTotal = saldo + payload.valor;
 &nbsp;
     // await ContasModel.update(
@@ -228,9 +232,9 @@ module.exports = class ReceitaController {
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve(response);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-  async filterByType<span class="fstat-no" title="function not covered" >({tipo_receita}) {</span>
+  async filterByType<span class="fstat-no" title="function not covered" >({ tipo_receita }) {</span>
 <span class="cstat-no" title="statement not covered" >    await db.sync();</span>
-<span class="cstat-no" title="statement not covered" >    const response = await ReceitaModel.findAll({where: {tipo_receita}});</span>
+<span class="cstat-no" title="statement not covered" >    const response = await ReceitaModel.findAll({ where: { tipo_receita } });</span>
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve(response);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
@@ -240,20 +244,22 @@ module.exports = class ReceitaController {
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve(response.destroy());</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-  async atualizarReceita<span class="fstat-no" title="function not covered" >(payload) {</span>
-<span class="cstat-no" title="statement not covered" >    await db.sync();</span>
-<span class="cstat-no" title="statement not covered" >    const response = await ReceitaModel.update(payload, {</span>
-<span class="cstat-no" title="statement not covered" >      where: { id: payload.id },</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >    return Promise.resolve(response);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async atualizarReceita(payload) {
+    await db.sync();
+    const response = await ReceitaModel.update(payload, {
+      where: { id: payload.id },
+    });
+    return Promise.resolve(response);
+  }
 &nbsp;
-  async receitasTotal<span class="fstat-no" title="function not covered" >() {</span>
-<span class="cstat-no" title="statement not covered" >    await db.sync();</span>
-<span class="cstat-no" title="statement not covered" >    const response = await ReceitaModel.findAll();</span>
-<span class="cstat-no" title="statement not covered" >    const saldoTotal = response.map(receita =&gt; parseFloat(receita.valor)).reduce((p, c) =&gt; p + c);</span>
-<span class="cstat-no" title="statement not covered" >    return Promise.resolve(Total);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async receitaTotal() {
+    await db.sync();
+    const response = await ReceitaModel.findAll();
+    const saldoTotal = response
+      .map((receita) =&gt; parseFloat(receita.valor || 0 ))
+      .reduce((p, c) =&gt; p + c);
+    return Promise.resolve(saldoTotal);
+  }
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -262,7 +268,7 @@ module.exports = class ReceitaController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jan 11 2022 20:02:39 GMT-0300 (Horário Padrão de Brasília)
+                at Wed Jan 12 2022 20:07:06 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../prettify.js"></script>
         <script>

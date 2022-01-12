@@ -1,5 +1,5 @@
 const db = require("../database/index");
-
+const { Op } = require("sequelize");
 const DespesasModel = require("../models/despesas.model");
 
 module.exports = class ReceitaController {
@@ -14,10 +14,16 @@ module.exports = class ReceitaController {
   async filterByDate({ data_inicial, data_final }) {
     await db.sync();
     const response = await DespesasModel.findAll({
-      where: { data_recebimento: { [Op.between]: [data_inicial, data_final] } },
+      where: { createdAt: { [Op.between]: [data_inicial, data_final] } },
     });
     return Promise.resolve(response);
-  }   
+  }
+  
+  async filterByType({tipo_despesas}) {
+    await db.sync();
+    const response = await DespesasModel.findAll({where: {tipo_despesas}});
+    return Promise.resolve(response);
+  }
 
   async novaDespesa(payload) {
     await db.sync();
@@ -41,7 +47,7 @@ module.exports = class ReceitaController {
   async despesasTotal() {
     await db.sync();
     const response = await DespesasModel.findAll();
-    const despesasTotal = response.map(despesa => parseFloat(despesa.valor)).reduce((p, c) => p + c);
+    const despesasTotal = response.map(despesa => parseFloat(despesa.valor||0)).reduce((p, c) => p + c);
     return Promise.resolve(despesasTotal);
   }
 };
