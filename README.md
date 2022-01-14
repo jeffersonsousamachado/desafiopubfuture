@@ -42,13 +42,13 @@ or
 yarn install
 ```
 
-##### * Fazendo a migração do banco de dados com Bibliotéca Sequelize
+##### * Fazendo a migração do banco de dados com Biblioteca Sequelize
 ```
 sequelize init 
 sequelize db:migrate
 sequelize migration:generate --name tb-contas
 sequelize migration:generate --name tb-receitas
-sequelize migration:generate --name tb-despeas
+sequelize migration:generate --name tb-despesas
 ```
 
 ##### * Rodar o projeto em modo de desenvolvimento
