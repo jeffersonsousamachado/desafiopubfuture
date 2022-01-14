@@ -6,6 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=prod nodemon index.js",
     "test": "cross-env NODE_ENV=test jest",
+    "prepare:test":"./node_modules/jest/bin/jest.js init",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "db:create-test":"cross-env NODE_ENV=test sequelize db:migrate",
     "db:migrations-test":"cross-env NODE_ENV=test sequelize migration:generate --name test-contas"
