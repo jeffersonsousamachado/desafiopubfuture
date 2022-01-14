@@ -14,16 +14,22 @@ module.exports = class ReceitaController {
 
   async novaReceita(payload) {
     await db.sync();
+    const contas = await ContasModel.findAll({ where: { id: payload.conta } });
+    let saldoContas = 0;
+    if (contas && contas.length > 0) {
+      saldoContas = contas
+        .map((conta) => parseFloat(conta.saldo || 0))
+        .reduce((p, c) => p + c);
+    }
 
-    // const saldo = await ContasModels.sum("saldo", { group: "id" });
-    // const saldoTotal = saldo + payload.valor;
+    const saldoTotal = saldoContas + payload.valor;
 
-    // await ContasModel.update(
-    //   { saldo: saldoTotal },
-    //   { where: { id: payload.conta } }
-    // );
+    await ContasModel.update(
+      { saldo: saldoTotal },
+      { where: { id: payload.conta } }
+    );
+
     const response = await ReceitaModel.create(payload);
-
     return Promise.resolve(response);
   }
 
@@ -59,7 +65,7 @@ module.exports = class ReceitaController {
     await db.sync();
     const response = await ReceitaModel.findAll();
     const saldoTotal = response
-      .map((receita) => parseFloat(receita.valor || 0 ))
+      .map((receita) => parseFloat(receita.valor || 0))
       .reduce((p, c) => p + c);
     return Promise.resolve(saldoTotal);
   }

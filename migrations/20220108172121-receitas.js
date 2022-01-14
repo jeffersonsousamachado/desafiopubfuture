@@ -18,10 +18,12 @@ module.exports = {
       data_inicial: { type: Sequelize.DATE, default: new Date() },
       data_final: { type: Sequelize.DATE, default: new Date() },
       descricao: { type: Sequelize.STRING },
-      conta: { type: Sequelize.STRING },
+      tipo_conta: { type: Sequelize.STRING },
       tipo_receita: { type: Sequelize.STRING },
     });
   },
 
-  down: async (queryInterface, Sequelize) => {},
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable("tb_receitas");
+  },
 };

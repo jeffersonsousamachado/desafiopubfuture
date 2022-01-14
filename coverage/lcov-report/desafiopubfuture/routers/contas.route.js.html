@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.5% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/53</span>
+                <span class='fraction'>29/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.5% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/53</span>
+                <span class='fraction'>29/58</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -116,7 +116,12 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -127,6 +132,26 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -137,26 +162,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -174,23 +184,26 @@ const router = express.Router();
 const contasController = require("../controllers/contas.controller");
 const ct = new contasController();
 &nbsp;
+//Buscar contas já cadastradas - (ERRO)
 router.get("/", async (req, res) =&gt; {
   const response = await ct.getContas();
   res.status(200).json({ data: response });
 });
 &nbsp;
+//Saldo total da conta (testado) - precisa de correção no código, esta buscando tb_contas ao inves de tb_receitas coluna de valores
 router.get("/saldo-total", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const response = await ct.saldoTotal();</span>
 <span class="cstat-no" title="statement not covered" >  res.status(200).json({ data: response });</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-&nbsp;
+//Cadastrar nova conta (testado)
 router.post("/", async (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  const payload = req.body;</span>
-<span class="cstat-no" title="statement not covered" >  const response = await ct.novaConta(payload);</span>
+  const payload = req.body;
+<span class="branch-0 cbranch-no" title="branch not covered" >  const response = await ct.novaConta(payload);</span>
 <span class="cstat-no" title="statement not covered" >  res.status(201).json({ data: response });</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
+//transferencia entre contas (ERRO)
 router.post("/transferencia", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const { id_origem, id_destino, valor} = req.body;</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
@@ -201,6 +214,7 @@ router.post("/transferencia", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
+//Deletando conta (erro)
 router.delete("/:id", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const { id } = req.params;</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
@@ -211,6 +225,7 @@ router.delete("/:id", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
+//atualizando conta - editando algum valor dentro dos campos , tipo conta, nome instituição, etc
 router.put("/", async (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const payload = req.body;</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
@@ -229,7 +244,7 @@ module.exports = router;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed Jan 12 2022 20:07:06 GMT-0300 (Horário Padrão de Brasília)
+                at Thu Jan 13 2022 20:01:22 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -19,7 +19,7 @@ describe("Receitas", () => {
   // //       });
   // //   });
 
-  //listar receitas (ok)
+  //Buscar todas receitas (ok)
   it("buscareceitas", async () => {
     const response = await requests(server).get("/receitas");
     expect(response.statusCode).toEqual(200);
@@ -34,7 +34,7 @@ describe("Receitas", () => {
       data_inicial: "2022-01-07T19:33:48.676Z",
       data_final: "2022-01-09T19:33:48.676Z",
       descricao: "Salário-vale",
-      conta: "conta_corrente",
+      tipo_conta: "conta_corrente",
       tipo_receita: "hora extra",
     });
     expect(response.body).toHaveProperty("data");
@@ -73,7 +73,7 @@ describe("Receitas", () => {
   // atualizar receita (ok)
   it("atualizar receita", async () => {
     const response = await requests(server).put("/receitas", {
-      conta: "corrente",
+      tipo_conta: "corrente",
       id: 27,
     });
     expect(response.body).toHaveProperty("data");
