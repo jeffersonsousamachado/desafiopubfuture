@@ -1,5 +1,7 @@
 const db = require("../database/index");
 const ContasModel = require("../models/contas.model");
+const DespesasModel = require("../models/despesas.model");
+const ReceitaModel = require("../models/receitas.model");
 
 module.exports = class ReceitaController {
   constructor() {}
@@ -25,10 +27,14 @@ module.exports = class ReceitaController {
   }
 
   // Remover conta - precisa trocar por tipo_conta ( )
-  async removerConta(id) {
+  async removerConta({id_conta}) {
     await db.sync();
-    const response = await ContasModel.findOne({ where: { id } });
-    return Promise.resolve(response.destroy());
+    const response = await ContasModel.findOne({ where: { id: id_conta } });
+    response.destroy()
+    await DespesasModel.destroy({ where: { conta: id_conta } });
+    await ReceitaModel.destroy({ where: { conta: id_conta } });
+    
+    return Promise.resolve(true);
   }
 
   // Editar conta, atualizando algum campo como tipo de conta, valor, etc.
@@ -69,7 +75,7 @@ module.exports = class ReceitaController {
     await db.sync();
     const response = await ContasModel.findAll();
     const saldoTotal = response
-      .map((conta) => parseFloat(conta.saldo || 0))
+      .map((conta) =>conta.saldo)
       .reduce((p, c) => p + c);
     return Promise.resolve(saldoTotal);
   }

@@ -1,7 +1,7 @@
 # desafiopubfuture
 
 
-## Versão atual: 1.0
+## Versão atual: 1.1
 
 #### Inicializando o projeto
 #### Ambiente de Desenvolvimento
@@ -66,6 +66,11 @@ npm run test
 
 É necessário criar um arquivo `.env` com as configurações default para acesso ao banco de dados local
 
+
+##### * Atualizações de correção dos bugs - issues
+* [X] - fazer cálculo correto do saldo das contas;
+* [x] - corrigir o tipo string para number das contas;
+* [] - terminar de aplicar os testes unitários; Foi realizado apenas 40% dos testes.
 ______________________________________________________________________________________________________________________________________
 
 ## Descrição:

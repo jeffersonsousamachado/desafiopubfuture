@@ -41,10 +41,9 @@ router.post("/filter-by-type", async (req, res) => {
 });
 
 // deletar receita - (testado)
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+router.delete("/", async (req, res) => {
   try {
-    await rc.removerReceita(id);
+    await rc.removerReceita(req.query);
     res.status(201).json({ data: "receita deletada" });
   } catch (err) {
     res.status(500).json({ data: "não foi possível remover a receita" });

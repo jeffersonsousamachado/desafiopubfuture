@@ -34,10 +34,9 @@ router.post("/transferencia", async (req, res) => {
 });
 
 //Deletando conta (erro)
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+router.delete("/", async (req, res) => {
   try {
-    await ct.removerConta(id);
+    await ct.removerConta(req.query);
     res.status(201).json({ data: "conta deletada" });
   } catch (err) {
     res.status(500).json({ data: "não foi possível remover a conta" });

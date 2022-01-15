@@ -37,13 +37,12 @@ router.post("/filter-by-type", async (req, res) => {
 });
 
 //deletar despesas (testado)
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+router.delete("/", async (req, res) => {
   try {
-    await ds.removerDespesa(id);
+    await ds.removerDespesa(req.query);
     res.status(201).json({ data: "despesa deletada" });
   } catch (err) {
-    res.status(500).json({ data: "não foi possível remover a despesa" });
+    res.status(500).json({ data: "não foi possível remover a despesa", err: JSON.stringify(err) });
   }
 });
 

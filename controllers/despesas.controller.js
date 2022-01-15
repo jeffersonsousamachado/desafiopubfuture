@@ -29,48 +29,110 @@ module.exports = class ReceitaController {
 
   async novaDespesa(payload) {
     await db.sync();
+    const response = await DespesasModel.create(payload);
+    await this.updateSaldo(payload.conta);
+    return Promise.resolve(response);
 
-    const contas = await ContasModel.findAll({ where: { id: payload.conta } });
-    let saldoContas = 0;
-    if (contas && contas.length > 0) {
-      saldoContas = contas
-        .map((conta) => parseFloat(conta.saldo || 0))
-        .reduce((p, c) => p + c);
+    // const contas = await ContasModel.findAll({ where: { id: payload.conta } });
+    // let saldoContas = 0;
+    // if (contas && contas.length > 0) {
+    //   saldoContas = contas
+    //     .map((conta) => conta.saldo)
+    //     .reduce((previous, current) => previous + current);
+    // }
+
+    // const receitas = await ReceitaModel.findAll({ where: { conta: payload.conta } });
+    // const despesas = await DespesasModel.findAll({ where: { conta: payload.conta } });
+
+    // let saldoDespesas = 0;
+    // if (despesas && despesas.length > 0) {
+    //   saldoDespesas = despesas
+    //     .map((conta) => conta.valor)
+    //     .reduce((previous, current) => previous + current);
+    // }
+
+    // let saldoReceita = 0;
+    // if (receitas && receitas.length > 0) {
+    //   saldoReceita = receitas
+    //     .map((conta) => conta.valor)
+    //     .reduce((previous, current) => previous + current);
+    // }
+    // const saldoTotal = (saldoReceita - saldoDespesas);
+
+    // await ContasModel.update(
+    //   { saldo: saldoTotal },
+    //   { where: { id: payload.conta } }
+    // );
+  }
+
+  async updateSaldo(id_conta) {
+    const receitas = await ReceitaModel.findAll({ where: { conta: id_conta } });
+    const despesas = await DespesasModel.findAll({
+      where: { conta: id_conta },
+    });
+
+    let saldoDespesas = 0;
+    if (despesas && despesas.length > 0) {
+      saldoDespesas = despesas
+        .map((conta) => conta.valor)
+        .reduce((previous, current) => previous + current);
     }
 
-    const saldoTotal = Math.abs(saldoContas - payload.valor);
+    let saldoReceita = 0;
+    if (receitas && receitas.length > 0) {
+      saldoReceita = receitas
+        .map((conta) => conta.valor)
+        .reduce((previous, current) => previous + current);
+    }
+
+    const saldoTotal = saldoReceita - saldoDespesas;
 
     await ContasModel.update(
       { saldo: saldoTotal },
-      { where: { id: payload.conta } }
+      { where: { id: id_conta } }
     );
-    const response = await DespesasModel.create(payload);
-    return Promise.resolve(response);
   }
 
-  async removerDespesa(id) {
+  async removerDespesa({ id_despesas, id_conta }) {
     await db.sync();
-    const response = await DespesasModel.findOne({ where: { id } });
-    return Promise.resolve(response.destroy());
+    const response = await DespesasModel.findOne({
+      where: { id: id_despesas },
+    });
+    response.destroy();
+    await this.updateSaldo(id_conta);
+    return Promise.resolve(true);
   }
 
   async atualizarDespesas(payload) {
     await db.sync();
-    const contas = await ContasModel.findAll({ where: { id: payload.conta } });
-    const saldoContas = contas
-      .map((conta) => parseFloat(conta.saldo || 0))
-      .reduce((p, c) => p + c);
-    const saldoTotal = Math.abs(saldoContas - payload.valor);
-
-    await ContasModel.update(
-      { saldo: saldoTotal },
-      { where: { id: payload.conta } }
-    );
-
     const response = await DespesasModel.update(payload, {
       where: { id: payload.id },
     });
+    await this.updateSaldo(payload.conta);
     return Promise.resolve(response);
+
+    // const receitas = await ReceitaModel.findAll({ where: { conta: payload.conta } });
+    // const despesas = await DespesasModel.findAll({ where: { conta: payload.conta } });
+
+    // let saldoDespesas = 0;
+    // if (despesas && despesas.length > 0) {
+    //   saldoDespesas = despesas
+    //     .map((conta) => conta.valor)
+    //     .reduce((previous, current) => previous + current);
+    // }
+
+    // let saldoReceita = 0;
+    // if (receitas && receitas.length > 0) {
+    //   saldoReceita = receitas
+    //     .map((conta) => conta.valor)
+    //     .reduce((previous, current) => previous + current);
+    // }
+    // const saldoTotal = (saldoReceita - saldoDespesas);
+
+    // await ContasModel.update(
+    //   { saldo: saldoTotal },
+    //   { where: { id: payload.conta } }
+    // );
   }
 
   async despesasTotal() {
